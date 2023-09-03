@@ -29,5 +29,5 @@ After first run, a new file mc.starvalor.satellites.cfg will be created in .\Sta
 
 Mod Info
 ======
-Satellite item ID = 30000
+Satellite item ID = 30000  
 Articulated Arm equipment ID = 30000

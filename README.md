@@ -4,7 +4,7 @@ Backup your save before using any mods.
   
 Uninstall any mods and attempt to replicate issues before reporting any suspected base game bugs on official channels.  
 
-WARNING: Until the game is changed, uninstalling any equipment or item mod such as this will break your save game.  
+WARNING: Until the game is changed, uninstalling any equipment or item mod such as this will break any save game played while the mod was installed.  
   
 Function  
 ========  

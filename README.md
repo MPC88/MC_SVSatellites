@@ -34,4 +34,4 @@ Articulated Arm equipment ID = 30000
 
 Credit  
 =======  
-Satellite model is a modified (reduced poly, several details removed, textures minor edit) version of: https://sketchfab.com/3d-models/communication-satellite-9a7ad3344edb4e598de848a5badb7416 by Harri Snellman 
+Satellite model is a modified (reduced poly, several details removed, textures edits) version of: https://sketchfab.com/3d-models/communication-satellite-9a7ad3344edb4e598de848a5badb7416 by Harri Snellman 

@@ -11,7 +11,7 @@ Adds deployable satellites to serve as permanent map markers.
 **Satellite**  
 A new item available from most stations.  Deploy these to add a new permanent marker to the sector map.  Satellites will reveal hidden debris fields in their radius.  Satellites will act as remote scanners, showing asteroids, ships, collectibles, etc.  Satellite scanners have a fixed power of 230 (configurable).  
   
-**Articulate Arm**  
+**Articulated Arm**  
 New equipment required for deploying satellites.  Provides a scaling scavenging loot bonus.  Activate to deploy a satellite (if you have then in your cargo).  Shift+Activate to destroy a satellite.  Note that satellite items are not recovered, the deployed satellite is just removed.  
   
 Install  

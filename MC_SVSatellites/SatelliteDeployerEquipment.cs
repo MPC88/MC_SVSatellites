@@ -74,7 +74,7 @@ namespace MC_SVSatellites
             equipment.requiredQnt = 0;
             equipment.equipName = equipmentName;
             equipment.description = description;
-            equipment.craftingMaterials = null;
+            equipment.craftingMaterials = new List<CraftMaterial>();
             equipment.buff = null;
 
             return equipment;

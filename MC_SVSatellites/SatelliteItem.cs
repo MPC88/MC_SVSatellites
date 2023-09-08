@@ -50,58 +50,5 @@ namespace MC_SVSatellites
 			item.teachItemBlueprints = new int[0];
 			return item;
 		}
-
-        /**
-         * The following methods are required to due vanilla game assumption that item ID == index in ItemDB
-         * items List<Item>.  While this is fair for vanilla entries, a mod entry which attempts to avoid
-         * ID collisions causes failures:
-         * MarketSystem.GetItemForQuest => null reference exception.
-         * MarketSystem.GenerateMarket => mod item will never appear (again, null ref, but original method checks so no exception).
-		 */
-        [HarmonyPatch(typeof(MarketSystem), nameof(MarketSystem.GetItemForQuest))]
-        [HarmonyPrefix]
-        private static bool MarketSystemGetItemForQuest_Pre(int rarity, float maxPrice, List<MarketItem> forbiddenList, System.Random rand, ref Item __result)
-        {
-            List<Item> items = AccessTools.StaticFieldRefAccess<List<Item>>(typeof(ItemDB), "items");
-            List<Item> list = new List<Item>();
-            for (int i = 0; i < ItemDB.count; i++)
-            {
-                Item item = items[i];
-                if (item.askedInQuests && item.rarity == rarity && item.basePrice <= maxPrice)
-                {
-                    if (forbiddenList == null)
-                    {
-                        list.Add(item);
-                    }
-                    else if (MarketSystem.GetMarketItem(3, item.id, forbiddenList, null) == null)
-                    {
-                        list.Add(item);
-                    }
-                    else if (MarketSystem.GetMarketItem(3, item.id, forbiddenList, null).stock == 0)
-                    {
-                        list.Add(item);
-                    }
-                }
-            }
-            if (list.Count > 0)
-            {
-                __result = list[rand.Next(0, list.Count)];
-            }
-            __result = null;
-
-            return false;
-        }
-
-        [HarmonyPatch(typeof(MarketSystem), nameof(MarketSystem.GenerateMarket))]
-        [HarmonyPostfix]
-        private static void MarketSystemGenerateMarket_Post(int factionIndex, System.Random rand, ref List<MarketItem> __result)
-        {
-            Item item = ItemDB.GetItem(id);
-            if (rand.Next(1, 101) <= item.tradeChance[factionIndex])
-            {
-                __result.Add(new MarketItem(3, id, 1, rand.Next((int)((float)item.tradeQuantity * 0.1f), item.tradeQuantity), null));
-                MarketSystem.SortMarket(__result);
-            }
-        }
     }
 }

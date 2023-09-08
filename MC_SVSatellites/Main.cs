@@ -15,7 +15,7 @@ namespace MC_SVSatellites
     {
         public const string pluginGuid = "mc.starvalor.satellites";
         public const string pluginName = "SV Satellites";
-        public const string pluginVersion = "1.0.0";
+        public const string pluginVersion = "1.1.0";
         private const string modSaveFolder = "/MCSVSaveData/";  // /SaveData/ sub folder
         private const string modSaveFilePrefix = "Sats_"; // modSaveFlePrefixNN.dat
 
@@ -166,6 +166,18 @@ namespace MC_SVSatellites
             catch
             {
                 SideInfo.AddMsg("<color=red>Satellites mod load failed.</color>");
+            }
+        }
+
+        [HarmonyPatch(typeof(GameData), nameof(GameData.CreateDefaultChar))]
+        [HarmonyPostfix]
+        private static void GameDataCreateDefaultChar_Post()
+        {
+            if (PChar.Char != null && PChar.Char.HasPerk(324))
+            {
+                PChar.Char.AddBlueprint(2, SatelliteDeployerEquipment.id, 1f);
+                PChar.Char.AddBlueprint(3, SatelliteItem.id, 1f);
+                PChar.Char.SortBlueprints();
             }
         }
     }

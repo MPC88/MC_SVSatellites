@@ -43,7 +43,7 @@ namespace MC_SVSatellites
 			item.craftingLevelAffectsYield = true;
 			item.craftingMaterials = new List<CraftMaterial>()
 			{
-				new CraftMaterial(84, 2),
+				new CraftMaterial(42, 2),
 				new CraftMaterial(9, 2),
 				new CraftMaterial(51, 1)				
             };

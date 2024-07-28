@@ -21,12 +21,12 @@ namespace MC_SVSatellites
 
         [HarmonyPatch(typeof(Inventory), nameof(Inventory.EquipItem))]
         [HarmonyPrefix]
-        private static bool InventoryEquipItem_Pre(Inventory __instance, int ___selectedItem, CargoSystem ___cs, SpaceShip ___ss)
+        private static bool InventoryEquipItem_Pre(Inventory __instance, int ___selectedItem, SpaceShip ___ss)
         {
             if (___selectedItem < 0)
                 return true;
 
-            bool isArticulatingArm = ___cs.cargo[___selectedItem].itemType == 2 && ___cs.cargo[___selectedItem].itemID == id;
+            bool isArticulatingArm = PlayerControl.inst.GetCargoSystem.cargo[___selectedItem].itemType == 2 && PlayerControl.inst.GetCargoSystem.cargo[___selectedItem].itemID == id;
             if (!isArticulatingArm || (!__instance.inStation && GameData.data.difficulty == 1))
                 return true;
 

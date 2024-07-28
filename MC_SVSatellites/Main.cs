@@ -15,7 +15,7 @@ namespace MC_SVSatellites
     {
         public const string pluginGuid = "mc.starvalor.satellites";
         public const string pluginName = "SV Satellites";
-        public const string pluginVersion = "1.1.1";
+        public const string pluginVersion = "1.2.0";
         private const string modSaveFolder = "/MCSVSaveData/";  // /SaveData/ sub folder
         private const string modSaveFilePrefix = "Sats_"; // modSaveFlePrefixNN.dat
 

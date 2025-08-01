@@ -2,6 +2,7 @@
 using BepInEx.Configuration;
 using HarmonyLib;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -15,7 +16,7 @@ namespace MC_SVSatellites
     {
         public const string pluginGuid = "mc.starvalor.satellites";
         public const string pluginName = "SV Satellites";
-        public const string pluginVersion = "1.3.0";
+        public const string pluginVersion = "1.3.1";
         private const string modSaveFolder = "/MCSVSaveData/";  // /SaveData/ sub folder
         private const string modSaveFilePrefix = "Sats_"; // modSaveFlePrefixNN.dat
 
@@ -75,25 +76,25 @@ namespace MC_SVSatellites
             minimapIcon.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = Assets.mapIcon.texture;
             minimapIcon.transform.GetChild(0).localScale = new Vector3(30f, 30f, 1f);
             minimapIcon.name = "Satellite Icon";
-            int vertices = 200;
-            LineRenderer line = minimapIcon.AddComponent<LineRenderer>();
-            line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));                        
-            line.startWidth = line.endWidth = 0.5f;
-            line.loop = true;
-            float angle = 2 * Mathf.PI / vertices;
-            line.positionCount = vertices;
-            for (int i = 0; i < vertices; i++)
-            {
-                Matrix4x4 rotationMatrix = new Matrix4x4(new Vector4(Mathf.Cos(angle * i), 0, Mathf.Sin(angle * i), 0),
-                                                         new Vector4(-1 * Mathf.Sin(angle * i), 0, Mathf.Cos(angle * i), 0),
-                                           new Vector4(0, 1, 0, 0),
-                                           new Vector4(0, 0, 0, 1));
-                Vector3 initialRelativePosition = new Vector3(0, cfg_SatRange.Value, 0);
-                line.SetPosition(i, minimapIcon.transform.position + rotationMatrix.MultiplyPoint(initialRelativePosition));
 
+            int segments = 360;
+            LineRenderer line = minimapIcon.AddComponent<LineRenderer>();
+            line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+            line.useWorldSpace = false;
+            line.startWidth = 1f;
+            line.endWidth = 1f;
+            line.positionCount = segments + 1;
+            int pointCount = segments + 1;
+            Vector3[] points = new Vector3[pointCount];
+
+            for (int i = 0; i < pointCount; i++)
+            {
+                float rad = Mathf.Deg2Rad * (i * 360f / segments);
+                points[i] = new Vector3(Mathf.Sin(rad) * cfg_SatRange.Value, 0, Mathf.Cos(rad) * cfg_SatRange.Value);
             }
-            line.startColor = line.endColor = new Color(20, 115, 210, 1);
-            line.colorGradient.Evaluate(0.2f);            
+            line.startColor = line.endColor = new Color(0f, 0.63f, 0.9f, 1);
+            line.SetPositions(points);
+            
             minimapIcon.SetActive(true);
 
             return newGo;

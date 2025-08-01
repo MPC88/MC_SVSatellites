@@ -19,12 +19,20 @@ Install
 1. Install BepInEx - https://docs.bepinex.dev/articles/user_guide/installation/index.html Stable version 5.4.21 x86.  
 2. Run the game at least once to initialise BepInEx and quit.  
 3. Download latest mod release.  
-4. Place MC_SVSatellites.dll and mc_svsatellites in .\SteamLibrary\steamapps\common\Star Valor\BepInEx\plugins\  
+4. Place MC_SVSatellites.dll, mc_svsatellites and MC_SVSatellitesLang.txt in .\SteamLibrary\steamapps\common\Star Valor\BepInEx\plugins\  
 
 Configuration  
 ===========  
 After first run, a new file mc.starvalor.satellites.cfg will be created in .\Star Valor\BepInex\config.  Here you can set the scanner power for satellites.  
-
+  
+Language  
+=====  
+Language file is just line separated .txt.  Change to whatever you wish.  
+    
+Language files can be found: https://github.com/MPC88/MC_SVSatellites/tree/master/LanguageFiles  
+  
+Download the file (or copy paste content).  Make sure file is renamed to remove "LANGUAGE_" from the filename e.g: "ENGLISH_MC_SVSatellitesLang.txt" becomes "MC_SVSatellitesLang.txt".  
+  
 Mod Info
 ======
 Satellite item ID = 30000  

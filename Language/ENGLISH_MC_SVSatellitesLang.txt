@@ -1,0 +1,7 @@
+Satellites mod load failed.
+Articulated Arm
+A remotely operated articulated robotic arm.
+Only one Articulated Arm may be installed.
+No satellites in cargo.
+Satellite
+A deployable remote satellite equipped with an on-board scanner, revealing hidden debris fields and relaying realtime data to your ship's computer.  Note deployed satellites cannot be retrieved, only destroyed.  Requires articulated arm to deploy.

@@ -15,7 +15,7 @@ namespace MC_SVSatellites
     {
         public const string pluginGuid = "mc.starvalor.satellites";
         public const string pluginName = "SV Satellites";
-        public const string pluginVersion = "1.2.0";
+        public const string pluginVersion = "1.3.0";
         private const string modSaveFolder = "/MCSVSaveData/";  // /SaveData/ sub folder
         private const string modSaveFilePrefix = "Sats_"; // modSaveFlePrefixNN.dat
 
@@ -25,7 +25,7 @@ namespace MC_SVSatellites
 
         private void Awake()
         {
-            Assets.Load(GetType().Assembly.Location);
+            Assets.Load(GetType().Assembly.Location);            
             Harmony.CreateAndPatchAll(typeof(Main));
             Harmony.CreateAndPatchAll(typeof(SatelliteDeployerEquipment));
             Harmony.CreateAndPatchAll(typeof(SatelliteItem));
@@ -165,7 +165,7 @@ namespace MC_SVSatellites
             }
             catch
             {
-                SideInfo.AddMsg("<color=red>Satellites mod load failed.</color>");
+                SideInfo.AddMsg("<color=red>" + Language.loadFailed + "</color>");
             }
         }
 

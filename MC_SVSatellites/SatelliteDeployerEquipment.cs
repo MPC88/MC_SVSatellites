@@ -8,10 +8,9 @@ namespace MC_SVSatellites
 {
     internal class SatelliteDeployerEquipment
     {
+        internal const string refEqName = "Articulated Arm";
         internal const int id = 30000;
-        internal const string equipmentName = "Articulated Arm";
-        internal const string description = "A remotely operated articulated robotic arm.";
-        
+                
         [HarmonyPatch(typeof(EquipmentDB), "LoadDatabaseForce")]
         [HarmonyPostfix]
         private static void EquipmentDBLoadDBForce_Post()
@@ -34,7 +33,7 @@ namespace MC_SVSatellites
             {
                 if (ae.equipment.id == id)
                 {
-                    InfoPanelControl.inst.ShowWarning("Only one " + equipmentName + " may be installed.", 1, false);
+                    InfoPanelControl.inst.ShowWarning(Language.onlyOneEquipmentMsg, 1, false);
                     return false;
                 }
             }
@@ -45,9 +44,9 @@ namespace MC_SVSatellites
         private static Equipment CreateEquipment()
         {
             Equipment equipment = ScriptableObject.CreateInstance<Equipment>();
-            equipment.name = id + "." + equipmentName;
+            equipment.name = id + "." + refEqName;
             equipment.id = id;
-            equipment.refName = equipmentName;
+            equipment.refName = refEqName;
             equipment.minShipClass = ShipClassLevel.Corvette;
             equipment.activated = true;
             equipment.enableChangeKey = true;
@@ -72,8 +71,8 @@ namespace MC_SVSatellites
             equipment.defaultKey = KeyCode.Alpha1;
             equipment.requiredItemID = -1;
             equipment.requiredQnt = 0;
-            equipment.equipName = equipmentName;
-            equipment.description = description;
+            equipment.equipName = Language.equipmentName;
+            equipment.description = Language.equipmentDescription;
             equipment.craftingMaterials = new List<CraftMaterial>();
             equipment.buff = null;
 
@@ -124,7 +123,7 @@ namespace MC_SVSatellites
                 int consume = this.ss.GetComponent<CargoSystem>().ConsumeItem(3, SatelliteItem.id, 1, -1);
                 if (consume < 0)
                 {
-                    InfoPanelControl.inst.ShowWarning("No satellites in cargo.", 1, false);
+                    InfoPanelControl.inst.ShowWarning(Language.noSatellites, 1, false);
                     return;
                 }
 

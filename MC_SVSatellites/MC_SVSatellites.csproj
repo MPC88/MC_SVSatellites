@@ -276,6 +276,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="PersistentData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,6 +4,8 @@ namespace MC_SVSatellites
 {
     public class Assets
     {
+        private const string languageFilename = "\\MC_SVSatellitesLang.txt";
+
         internal static GameObject satellite;
         internal static Sprite mapIcon;
         internal static Sprite itemIcon;
@@ -19,6 +21,8 @@ namespace MC_SVSatellites
             mapIcon = assets.LoadAsset<Sprite>("Assets/Satellite/mapicon.png");
             itemIcon = assets.LoadAsset<Sprite>("Assets/Satellite/itemicon.png");
             equipmentIcon = assets.LoadAsset<Sprite>("Assets/Satellite/equipmenticon.png");
+                        
+            Language.Load(pluginfolder + languageFilename);
         }
     }
 }

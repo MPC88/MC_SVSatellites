@@ -7,8 +7,7 @@ namespace MC_SVSatellites
     internal class SatelliteItem
     {
         internal const int id = 30000;
-        internal const string itemName = "Satellite";
-        internal const string description = "A deployable remote satellite equipped with an on-board scanner, revealing hidden debris fields and relaying realtime data to your ship's computer.\n\nNote deployed satellites cannot be retrieved, only destroyed.  Requires articulated arm to deploy.";
+		internal const string refItemName = "Satellite";
 
         [HarmonyPatch(typeof(ItemDB), "LoadDatabaseForce")]
         [HarmonyPostfix]
@@ -21,8 +20,8 @@ namespace MC_SVSatellites
 		{
 			Item item = ScriptableObject.CreateInstance<Item>();
 			item.id = id;
-			item.name = id + "." + itemName;
-			item.refName = itemName;
+			item.name = id + "." + refItemName;
+			item.refName = refItemName;
 			item.rarity = 1;
 			item.levelPlus = 1;
 			item.weight = 1f;
@@ -35,8 +34,8 @@ namespace MC_SVSatellites
 			item.sprite = Assets.itemIcon;
 			item.askedInQuests = true;
 			item.canBeStashed = false;
-			item.itemName = itemName;
-			item.description = description;
+			item.itemName = Language.itemName;
+			item.description = Language.itemDescription;
 			item.canUpgradeToTier = ItemRarity.Poor_0;
 			item.craftable = true;
 			item.craftingYield = 5;

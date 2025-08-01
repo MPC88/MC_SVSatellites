@@ -24,7 +24,15 @@ Install
 Configuration  
 ===========  
 After first run, a new file mc.starvalor.satellites.cfg will be created in .\Star Valor\BepInex\config.  Here you can set the scanner power for satellites.  
-
+  
+Language  
+=====  
+Language file is just line separated .txt.  Change to whatever you wish.  
+    
+Language files can be found: https://github.com/MPC88/MC_SVSatellites/tree/master/LanguageFiles  
+  
+Download the file (or copy paste content).  Make sure file is renamed to remove "LANGUAGE_" from the filename e.g: "ENGLISH_MC_SVSatellitesLang.txt" becomes "MC_SVSatellitesLang.txt".  
+  
 Mod Info
 ======
 Satellite item ID = 30000  

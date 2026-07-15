@@ -47,7 +47,7 @@ namespace MC_SVSatellites
             equipment.name = id + "." + refEqName;
             equipment.id = id;
             equipment.refName = refEqName;
-            equipment.minShipClass = ShipClassLevel.Corvette;
+            equipment.minShipClass = ShipClassLevel.Yacht;
             equipment.activated = true;
             equipment.enableChangeKey = true;
             equipment.space = 2;
